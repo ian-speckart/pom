@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "es2020", // Or "esnext"
+    "moduleResolution": "node", // Or "node16" or "nodenext"
+    "target": "es2020", // Or a more recent target
+    "baseUrl": "./", // Important: Helps resolve relative paths
+    "paths": {
+      "*": [
+        "./*"
+      ] // Optional: For more advanced path mapping
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

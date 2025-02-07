@@ -1,0 +1,120 @@
+:root {
+  font-family: ui-monospace, Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+  /* general vars */
+  --color-paused: rgb(155, 155, 155);
+
+  /* dark theme */
+  --bg-color: #1c1c1c;
+  --border-color: #373737;
+  --color-blue: #27c1ff;
+  --color-blue-soft: #346579;
+  --color-orange: #e7954e;
+  --color-orange-soft: #675535;
+}
+
+:root.light-theme {
+  /* light theme */
+  --bg-color: white;
+  --border-color: rgb(228, 228, 228);
+  --color-blue: #4e62e7;
+  --color-blue-soft: #8e98db;
+  --color-orange: #e7954e;
+  --color-orange-soft: #e4c99d;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--bg-color);
+  margin: 0;
+  user-select: none;
+}
+
+#app {
+  border: 1px solid var(--border-color);
+}
+
+div {
+  user-select: none;
+}
+
+span {
+  user-select: none;
+}
+
+.clocks {
+  display: flex;
+  padding: 10px 5px;
+}
+
+.clock {
+  /* otherwise default is display:inline, which prevents setting a width */
+  display: block;
+  width: 50%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+
+  color: var(--color-paused);
+}
+
+.clock:hover {
+  text-decoration: underline;
+}
+
+.clock.pom {
+  color: var(--color-blue);
+}
+
+.clock.break {
+  color: var(--color-orange);
+}
+
+/* override the blue/orange colors when paused,
+but not in the totals view (which is always paused) */
+.paused .clock.pom:not(.totals),
+.paused .clock.break:not(.totals) {
+  color: var(--color-paused);
+}
+
+.progress-bar {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  z-index: 1;
+}
+
+#progress-bar-primary.pom {
+  background-color: var(--color-blue);
+}
+
+#progress-bar-secondary.pom {
+  background-color: var(--color-blue-soft);
+}
+
+#progress-bar-primary.break {
+  background-color: var(--color-orange);
+}
+
+#progress-bar-secondary.break {
+  background-color: var(--color-orange);
+}
+
+#progress-bar-secondary.break:not(.totals) {
+  background-color: var(--color-orange-soft);
+}
+
+#progress-bar-primary {
+  left: 0;
+}
+
+#progress-bar-secondary {
+  left: unset;
+  right: 0;
+  z-index: 0;
+}

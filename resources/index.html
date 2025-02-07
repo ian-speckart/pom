@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pom</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <div id="app" class="paused">
+      <div class="clocks">
+        <span id="clock-left" class="clock">0s</span>
+        <span id="clock-right" class="clock">0s</span>
+      </div>
+
+      <div id="progress-bar-primary" class="progress-bar"></div>
+      <div id="progress-bar-secondary" class="progress-bar"></div>
+    </div>
+    <!-- Neutralino.js client. This file is gitignored, 
+        because `neu update` typically downloads it.
+        Avoid copy-pasting it. 
+        -->
+    <script src="/js/neutralino.js"></script>
+    <!-- Your app's source files -->
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

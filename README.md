@@ -28,7 +28,7 @@ The app has 3 modes: Pomodoro, Breaks, Totals
 -Totals (blue and orange): it shows the total productivity of the day on the left, and the total breaks on the right.
 
 The app's border flashes when you worked/rested enough.  
-That encourages you to change the mode between Pomodoro <--> Breaks
+That encourages you to change the mode between Pomodoro and Breaks
 
 ![Documentation](assets/documentation.png)
 
@@ -39,7 +39,7 @@ This JavaScript app is packaged by Neutralino, which currently builds for these 
 -Mac ARM / Universal / x64  
 -Linux x64 / ARM64 / ARMHF
 
-Status:
+Status:  
 -The app runs properly on Windows.  
 -It hasn't been tested on Linux.  
 -It has been tested on Mac ARM and it currently has a few issues. See 'Known Issues' below.
@@ -50,7 +50,7 @@ Status:
 -Install node and npm.  
 -Install Neutralino (the app's framework)  
 .Usually: npm install -g @neutralinojs/neu  
-..But check Neutralino's documentation for the latest instructions: https://neutralino.js.org/docs/getting-started/your-first-neutralinojs-app  
+..But check [Neutralino's documentation](https://neutralino.js.org/docs/getting-started/your-first-neutralinojs-app) for the latest instructions.
 -cd to the repo.  
 -Initialize the repo with: neu update  
 .That adds neutralino.js to the project, along with the necessary binaries to bin/  
@@ -65,18 +65,19 @@ Status:
 # CONTROLS
 
 As the app is so minimal, all the controls are single keys, or mouse based.  
-Remember to click on the app before using the keyboard commands:  
-A: toggle always on top  
-D: open app directory  
-F: pause and switch to Totals view  
-G and P: toggle play/pause  
-M: minimize  
-Mouse left click (hold): drag app  
-Mouse wheel: change time of hovered clock  
-Q: save state and quit  
-R: reset hovered clock (resets app if pressed in Totals view)  
-Spacebar and S and Double click: switch views (Pomodoro/Breaks)  
-T: toggle dark/light theme
+Remember to click on the app before using the keyboard commands.
+
+**A**: toggle always on top  
+**D**: open app directory  
+**F**: pause and switch to Totals view  
+**G**, P: toggle play/pause  
+**M**: minimize  
+**Mouse left click (hold)**: drag app  
+**Mouse wheel**: change time of hovered clock  
+**Q**: save state and quit  
+**R**: reset hovered clock (resets app if pressed in Totals view)  
+**Spacebar, S, Double click**: switch views (Pomodoro/Breaks)  
+**T**: toggle dark/light theme
 
 # KNOWN ISSUES
 
@@ -94,8 +95,8 @@ MAC ISSUES
 .The issue is mentioned here https://github.com/neutralinojs/neutralinojs/issues/1197  
 ..Someone suggests the solution is to create a transparent layer or something.  
 -When dragging the app (by clicking inside the app), the CSS 'user-select:none' is ignored, so the clock's text will be selected for an instant.  
--Pressing a key on the app triggers a sound (one beep every time a key is pressed).  
--Adjusting a clock using the mouse wheel may step multiple minutes (instead of a single minute) if the user is running an app that fixes/improves the mouse scrolling on Mac (like "Mac Mouse Fix").
+-Pressing a key on the app triggers a sound (one short beep every time a key is pressed).  
+-Adjusting a clock using the mouse wheel may step multiple minutes (instead of a single minute) if the user is running an app that fixes/improves the mouse scrolling on Mac (like [Mac Mouse Fix](https://macmousefix.com/)).
 
 # TIPS
 
@@ -104,5 +105,6 @@ You can tell it's paused because the clocks are grey.
 So press G or P to toggle play.  
 From then on, you don't need to toggle play; just switch between Pomodoro and Breaks.  
 When you're done for the day, press F, which pauses the clocks and takes you to the Totals view.  
+Press M to minimize it, or Q to quit it.  
 The next day, press R in the Totals view to reset the app.  
 Then press Space to go to the Pomodoro view.

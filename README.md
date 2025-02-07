@@ -50,7 +50,7 @@ Status:
 -Install node and npm.  
 -Install Neutralino (the app's framework)  
 .Usually: npm install -g @neutralinojs/neu  
-..But check [Neutralino's documentation](https://neutralino.js.org/docs/getting-started/your-first-neutralinojs-app) for the latest instructions.
+..But check [Neutralino's documentation](https://neutralino.js.org/docs/getting-started/your-first-neutralinojs-app) for the latest instructions.  
 -cd to the repo.  
 -Initialize the repo with: neu update  
 .That adds neutralino.js to the project, along with the necessary binaries to bin/  
@@ -59,7 +59,7 @@ Status:
 -Install the app locally by copying these two files to your desired directory:  
 .dist/pom/pom-win_x64.exe (or the one relevant for your OS)  
 .dist/pom/resources.neu  
--The DevTools inspector window will open by default, so that you can debug or change the CSS.  
+-The DevTools inspector window will open by default (on Windows), so that you can debug or change the CSS.  
 .You can change this behaviour in neutralino.config.json (setting enableInspector to false).
 
 # CONTROLS

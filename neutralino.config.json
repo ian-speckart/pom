@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
   "applicationId": "js.neutralino.sample",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Pom",
   "defaultMode": "window",
   "port": 0,
@@ -44,7 +44,7 @@
       "fullScreen": false,
       "alwaysOnTop": true,
       "icon": "/resources/icons/appIcon.png",
-      "enableInspector": true,
+      "enableInspector": false,
       "singleInstance": true,
       "borderless": true,
       "maximize": false,

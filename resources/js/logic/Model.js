@@ -1,11 +1,11 @@
-import { secondsBetweenUnixMs } from '../utils/date-utils.js';
-import Neu from '../utils/Neu.js';
-import { $, validateInteger, validateNumber } from '../utils/utils.js';
-import View from '../View.js';
-import { signalChangedMode } from './app-signals.js';
-import { signalAppStepped } from './app-signals.js';
-import AppTimer from './AppTimer.js';
-import { AppWidth, BreakMaxSeconds, Modes, PomMaxSeconds } from './enums.js';
+import { secondsBetweenUnixMs } from "../utils/date-utils.js";
+import Neu from "../utils/Neu.js";
+import { $, validateInteger, validateNumber } from "../utils/utils.js";
+import View from "../View.js";
+import { signalChangedMode } from "./app-signals.js";
+import { signalAppStepped } from "./app-signals.js";
+import AppTimer from "./AppTimer.js";
+import { AppWidth, BreakMaxSeconds, Modes, PomMaxSeconds } from "./enums.js";
 
 class Model {
   init() {
@@ -22,7 +22,7 @@ class Model {
     this.totalsPomProgressBarWidth = AppWidth / 2;
     this.totalsBreakProgressBarWidth = AppWidth / 2;
     // helps determine which element to reset or adjust time
-    this.lastHoveredTargetId = '';
+    this.lastHoveredTargetId = "";
 
     signalAppStepped.add(this.#step);
   }
@@ -56,12 +56,12 @@ class Model {
       this.playing = false;
       AppTimer.pause();
 
-      $('#app').classList.add('paused');
+      $("#app").classList.add("paused");
     } else {
       this.playing = true;
       AppTimer.play();
 
-      $('#app').classList.remove('paused');
+      $("#app").classList.remove("paused");
     }
   }
 
@@ -140,8 +140,8 @@ class Model {
    */
   adjustClock(clockId, secondsDelta) {
     // figure out which clock to adjust, based on the hovered clock and the current mode
-    const isClockLeft = clockId === 'clock-left';
-    const isClockRight = clockId === 'clock-right';
+    const isClockLeft = clockId === "clock-left";
+    const isClockRight = clockId === "clock-right";
     const isPom = this.mode === Modes.POM;
     const isBreak = this.mode === Modes.BREAK;
 
@@ -223,12 +223,12 @@ class Model {
     }
   }
 
-  reset() {
+  reset(shiftKey) {
     const targetId = this.lastHoveredTargetId;
 
     // figure out which clock to reset, based on the hovered clock and the current mode
-    const isClockLeft = targetId === 'clock-left';
-    const isClockRight = targetId === 'clock-right';
+    const isClockLeft = targetId === "clock-left";
+    const isClockRight = targetId === "clock-right";
     const isPom = this.mode === Modes.POM;
     const isBreak = this.mode === Modes.BREAK;
 
@@ -243,6 +243,7 @@ class Model {
         break;
 
       case resetsPomTotal:
+        if (!shiftKey) return;
         this.secondsPomTotal = 0;
         break;
 
@@ -251,12 +252,15 @@ class Model {
         break;
 
       case resetsBreakTotal:
+        if (!shiftKey) return;
         this.secondsBreakTotal = 0;
         break;
     }
 
     // if R is pressed in the Totals view, reset everything
     if (this.mode === Modes.TOTALS) {
+      if (!shiftKey) return;
+
       this.secondsPom = PomMaxSeconds;
       this.secondsPomTotal = 0;
       this.secondsBreak = 0;
@@ -290,21 +294,21 @@ class Model {
      * to Neutralino.storage
      */
     if (toLocalStorage) {
-      localStorage.setItem('state', JSON.stringify(state));
-      localStorage.setItem('sleeping', 'true');
+      localStorage.setItem("state", JSON.stringify(state));
+      localStorage.setItem("sleeping", "true");
 
       /**
        * if the app is stepping/playing when the device is put to sleep, we'll later need to add the
        * total time slept to the total seconds of the current mode
        */
       if (this.playing) {
-        localStorage.setItem('disconnectedAt', Date.now());
+        localStorage.setItem("disconnectedAt", Date.now());
       }
 
       return;
     }
 
-    await Neu.saveKey('state', state);
+    await Neu.saveKey("state", state);
   }
 
   /**
@@ -317,24 +321,24 @@ class Model {
      * the state to localStorage, reload the window, and load the state.
      * We know if that's the case if sleeping is true.
      */
-    const sleeping = localStorage.getItem('sleeping') === 'true';
+    const sleeping = localStorage.getItem("sleeping") === "true";
     let stateStr;
     // the number of seconds the computer slept
     let sleepOffset = 0;
 
     if (sleeping) {
-      stateStr = localStorage.getItem('state');
+      stateStr = localStorage.getItem("state");
 
-      const disconnectedAt = localStorage.getItem('disconnectedAt');
+      const disconnectedAt = localStorage.getItem("disconnectedAt");
       if (validateInteger(disconnectedAt)) {
         sleepOffset = secondsBetweenUnixMs(Number(disconnectedAt), Date.now());
       }
 
-      localStorage.removeItem('sleeping');
-      localStorage.removeItem('state');
-      localStorage.removeItem('disconnectedAt');
+      localStorage.removeItem("sleeping");
+      localStorage.removeItem("state");
+      localStorage.removeItem("disconnectedAt");
     } else {
-      stateStr = await Neu.loadKey('state');
+      stateStr = await Neu.loadKey("state");
     }
 
     if (!stateStr) {
@@ -346,20 +350,20 @@ class Model {
     try {
       state = JSON.parse(stateStr);
     } catch (err) {
-      console.error('failed to load state. err:', err);
+      console.error("failed to load state. err:", err);
       return;
     }
 
     // if these keys are in 'state', and they're valid, use them
     const keys = [
-      'secondsPom',
-      'secondsPomTotal',
-      'secondsBreak',
-      'secondsBreakTotal',
-      'pomProgressBarWidth',
-      'breakProgressBarWidth',
-      'totalsPomProgressBarWidth',
-      'totalsBreakProgressBarWidth',
+      "secondsPom",
+      "secondsPomTotal",
+      "secondsBreak",
+      "secondsBreakTotal",
+      "pomProgressBarWidth",
+      "breakProgressBarWidth",
+      "totalsPomProgressBarWidth",
+      "totalsBreakProgressBarWidth",
     ];
 
     keys.forEach((key) => {

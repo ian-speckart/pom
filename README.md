@@ -75,14 +75,15 @@ Remember to click on the app before using the keyboard commands.
 **Mouse left click (hold)**: drag app  
 **Mouse wheel**: change time of hovered clock  
 **Q**: save state and quit  
-**R**: reset hovered clock (resets app if pressed in Totals view)  
+**R**: reset hovered clock (resets app if pressed in Totals view while holding shift)  
 **Spacebar, S, Double click**: switch views (Pomodoro/Breaks)  
 **T**: toggle dark/light theme
 
 # KNOWN ISSUES
 
 WINDOWS ISSUES  
--None.
+-Neutralino version 5.5.0 is required. More recent versions include a new window dragging system that block the double click event.  
+Issue reported here [#1493](https://github.com/neutralinojs/neutralinojs/issues/1493).
 
 LINUX ISSUES  
 -Not tested yet.
@@ -92,7 +93,7 @@ MAC ISSUES
 .That's likely because Mac doesn't get along with the small window size (135x60 pixels) in combination of a borderless app.  
 .The solution is to edit neutralino.config.json so that the window is resizable and not borderless, then run the app and resize the window. That new size will always be used, as apparently Mac doesnt allow resizing from code, so the width and height in the config will never be used by the OS.  
 -If the window is borderless, the keyboard commands won't work.  
-.The issue is mentioned here https://github.com/neutralinojs/neutralinojs/issues/1197  
+.The issue is mentioned here [#1197](https://github.com/neutralinojs/neutralinojs/issues/1197)  
 ..Someone suggests the solution is to create a transparent layer or something.  
 -When dragging the app (by clicking inside the app), the CSS 'user-select:none' is ignored, so the clock's text will be selected for an instant.  
 -Pressing a key on the app triggers a sound (one short beep every time a key is pressed).  

@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
-  "applicationId": "js.neutralino.sample",
+  "applicationId": "pom.ian.speckart",
   "version": "1.2.6",
   "description": "Pom",
   "defaultMode": "window",
-  "port": 0,
+  "port": 49152,
   "documentRoot": "/resources/",
   "url": "/",
   "enableServer": true,
@@ -13,7 +13,7 @@
   "tokenSecurity": "one-time",
   "logging": {
     "enabled": true,
-    "writeToLogFile": true
+    "writeToLogFile": false
   },
   "nativeAllowList": [
     "app.*",

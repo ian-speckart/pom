@@ -4,6 +4,24 @@ import Model from "./logic/Model.js";
 import { toggleTheme } from "./logic/theme-mgr.js";
 import Neu from "./utils/Neu.js";
 
+document.addEventListener("keydown", async function (e) {
+  let pressedKey;
+
+  if (typeof e.key === "string") {
+    pressedKey = e.key.toUpperCase();
+  }
+
+  if (!pressedKey) {
+    console.error("bad pressedKey");
+    return;
+  }
+
+  // SHIFT + R is handled better on keydown
+  if (pressedKey === "R") {
+    Model.reset(e.shiftKey);
+  }
+});
+
 document.addEventListener("keyup", async function (e) {
   let pressedKey;
 
@@ -45,10 +63,6 @@ document.addEventListener("keyup", async function (e) {
 
     case "Q":
       signalQuitRequested.dispatch();
-      break;
-
-    case "R":
-      Model.reset(e.shiftKey);
       break;
 
     case "T":

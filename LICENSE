@@ -22,9 +22,12 @@ SOFTWARE.
 
 ---
 
-Third party licenses:
+## THIRD-PARTY NOTICES
 
-NeutralinoJS:
+This project includes components from Neutralinojs.
+Files: neutralino.js, neutralino.d.ts
+https://neutralino.js.org/
+https://github.com/neutralinojs
 
 MIT License
 
